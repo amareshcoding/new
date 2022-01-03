@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background:#91b1cc ;
+        }
+        #box1{
+            background:#004e99;
+            height: 150px;
+            color: white;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+        #box1>h1{
+            margin: 0;
+        }
+        #box1>p{
+            font-size: 18px;
+        }
+        #city{
+            height: 30px;
+            border: 2px solid #004e99;
+            border-radius: 20px;
+        }
+        #btn1{
+            height: 35px;
+            border: 2px solid #004e99;
+            border-radius: 20px;
+        }
+        #box3{
+            height: 200px;
+            width: 95%;
+            background: #2b77be;
+            margin: 20px;
+            display: grid;
+            grid-template-columns: repeat(7,1fr);
+            grid-gap: 10px;
+            padding: 10px;
+        }
+        #box3>div{
+            border-radius: 10px;
+            background: #dae720;
+            text-align: center;
+        }
+        .nextDay>p{
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <h1>Welcome to Our Weather App</h1>
+        <p>Here you can search next 7 day weather information for your city. We are using satellite for uthentic information.</p>
+        <input type="text" placeholder="enter uour city name" id="city">
+        <button id="btn1" onclick=" getData()">search</button>
+    </div>
+    <div id="box3">
+        <!-- <div class="nextDay">
+            <h5>Day name</h5>
+            <p>MaxTemp:</p>
+            <p>MinTemp:</p>
+        </div> -->
+    </div>
+</body>
+</html>
+<script>
+    async function getData(){
+        try{
+            let city=document.querySelector("#city").value;
+            let res=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=aa47420846e9d103bcf81df633f13bdb&units=metric`)
+            let data = await res.json();
+            getFor7Day(data.coord.lat,data.coord.lon)
+            // console.log("data",data)
+            // console.log(data.coord.lat,data.coord.lon)
+        }catch(err){
+            console.log("err",err);
+        }
+
+    }
+    async function getFor7Day(lat,lon){
+        try{
+            let res7days=await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=aa47420846e9d103bcf81df633f13bdb&units=metric`)
+            let data7days = await res7days.json();
+            
+            appendWork(data7days.daily)
+            console.log("data7days",data7days)
+        }catch(err){
+            console.log("err",err)
+        }
+    }
+    function appendWork(arr){
+        let appendDiv=document.querySelector("#box3");
+        let html="";
+        arr.forEach(function(el,ind){
+            let days=["Monday","Tuesday","Wednessday","Thursday","Friday","Saturday","Sunday"]
+            let date=new Date(el.dt*1000)
+            let day=date.getDay()
+            if(ind!==0){
+                html+=
+                `<div class="nextDay">
+                    <h5>${days[day]}</h5>
+                    <p>MaxTemp: ${el.temp.max}°C</p>
+                    <p>MinTemp: ${el.temp.min}°C</p>
+                </div>`
+            }
+        })
+        appendDiv.innerHTML=html;  
+    }
+</script>
+
+
+<!-- let days=["Monday","Tuesday","Wednessday","Thursday","Friday","Saturday","Sunday"]
+let date=new Date(1640932200*1000)
+let day=date.getDay()
+console.log(days[day]) -->
+
+
+
+<!-- //*1000 new Date(time*1000) UnixTime
+let abc=await fetch(`https://showcase.api.linx.twenty57.net/UnixTime/fromunix?timestamp=${data7days.daily[0].dt}`)
+    abc=await abc.json()
+    abc=abc.split(" ")
+// console.log(abc[0].getDay()) -->
