@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #91b1cc;
+}
+#box1 {
+  background: #004e99;
+  height: 150px;
+  color: white;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+#box1 > h1 {
+  margin: 0;
+}
+#box1 > p {
+  font-size: 18px;
+}
+#city {
+  height: 30px;
+  border: 2px solid #004e99;
+  border-radius: 20px;
+}
+#btn1 {
+  height: 35px;
+  border: 2px solid #004e99;
+  border-radius: 20px;
+}
+#box3 {
+  height: 200px;
+  width: 95%;
+  background: #2b77be;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+}
+#box3 > div {
+  border-radius: 10px;
+  background: #dae720;
+  text-align: center;
+}
+.nextDay > p {
+  font-size: 17px;
+}

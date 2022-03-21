@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style/index.css" />
+  </head>
+  <body>
+    <div id="box1">
+      <h1>Welcome to Our Weather App</h1>
+      <p>
+        Here you can search real time weather information for your city. We are
+        using satellite for uthentic information.
+      </p>
+      <input type="text" placeholder="enter uour city name" id="city" />
+      <button id="btn1" onclick=" getData()">search</button>
+    </div>
+    <div id="box2">
+      <div id="wdiv">
+        <!-- <h5>Weather Information</h5>
+            <h5>City:</h5>
+            <h5>Time:</h5>
+            <h5>Temperature:°C</h5>
+            <h5>Pressure:</h5>
+            <h5>Humidity:</h5> -->
+      </div>
+      <div id="mapdiv">
+        <h5>Map View</h5>
+        <div id="mapbox"></div>
+      </div>
+    </div>
+    <div class="next_page_div">
+      <a class="next_page" href="7dayWeather.html"
+        >For next Seven Day's Weather Report</a
+      >
+    </div>
+    <script src="./script/index.js"></script>
+  </body>
+</html>
+
+<!-- https://www.embedgooglemap.net/ -->

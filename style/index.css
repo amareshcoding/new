@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #91b1cc;
+}
+#box1 {
+  background: #004e99;
+  height: 150px;
+  color: white;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+#box1 > h1 {
+  margin: 0;
+}
+#box1 > p {
+  font-size: 18px;
+}
+#city {
+  height: 30px;
+  border: 2px solid #004e99;
+  border-radius: 20px;
+}
+#btn1 {
+  height: 35px;
+  border: 2px solid #004e99;
+  border-radius: 20px;
+}
+#box2 {
+  height: 400px;
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+#wdiv {
+  background: cornflowerblue;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+#wdiv > h5:nth-child(1) {
+  text-align: center;
+}
+#mapdiv {
+  background: cornflowerblue;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+#mapdiv > h5:nth-child(1) {
+  text-align: center;
+  margin-bottom: 10px;
+}
+#mapbox {
+  background: cornflowerblue;
+  height: 80%;
+  border: 5px solid;
+}
+#mapbox > iframe {
+  width: 100%;
+  height: 100%;
+}
+.next_page_div {
+  text-align: center;
+}
+.next_page {
+  text-decoration: none;
+}
